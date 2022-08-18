@@ -13,5 +13,3 @@ Discord bot that notifies you when a seat has become available
   - Removes a tutorial from the watchlist. Note the format is the same as !watch
 - !removeall [Course Code] (optional)
   - Removes all tutorial from the given course. If no course is given, than it will remove all tutorials from all courses
-  
-### Note
