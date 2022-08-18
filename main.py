@@ -6,7 +6,7 @@ from discord.ext import commands
 from discord.ext import tasks
 import ttb
 
-bot = commands.Bot(command_prefix="!", help_command=None)
+bot = commands.Bot(command_prefix="!", help_command=None, intents=discord.Intents.all())
 
 cred_obj = firebase_admin.credentials.Certificate(os.getenv("CRED_OBJ"))
 default_app = firebase_admin.initialize_app(cred_obj, {
