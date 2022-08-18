@@ -10,10 +10,16 @@ def findCourse(course, tuts):
 
 	available_tuts = []
 
+	chrome_options = webdriver.ChromeOptions()
+	chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+	chrome_options.add_argument("--headless")
+	#chrome_options.add_argument("--disable-dev-shm-usage")
+	chrome_options.add_argument("--no-sandbox")
 
-	PATH = os.getenv("DRIVER_PATH")
+	#PATH = os.getenv("DRIVER_PATH")
+	PATH = 'chromedriver.exe'
 
-	driver = webdriver.Chrome(PATH)
+	driver = webdriver.Chrome(PATH, options=chrome_options)
 
 	driver.get('https://ttb.utoronto.ca/')
 

@@ -65,7 +65,7 @@ async def watch(ctx, course, tut):
 
 
     db.reference(f"/Users/{ctx.author.id}/Tutorials/{course}").update({tut: 0})
-    await ctx.channel.send("You are now watching {tut} for {course}")
+    await ctx.channel.send(f"You are now watching {tut} for {course}")
 
 @bot.command()
 async def courses(ctx):
