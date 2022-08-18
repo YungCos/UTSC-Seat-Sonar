@@ -16,8 +16,8 @@ def findCourse(course, tuts):
 	#chrome_options.add_argument("--disable-dev-shm-usage")
 	chrome_options.add_argument("--no-sandbox")
 
-	#PATH = os.getenv("DRIVER_PATH")
-	PATH = 'chromedriver.exe'
+	PATH = os.getenv("DRIVER_PATH")
+	#PATH = 'chromedriver.exe'
 
 	driver = webdriver.Chrome(PATH, options=chrome_options)
 
