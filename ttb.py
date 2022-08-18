@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import settings
+import os
 
 
 def findCourse(course, tuts):
@@ -11,7 +11,7 @@ def findCourse(course, tuts):
 	available_tuts = []
 
 
-	PATH = settings.DRIVER_PATH
+	PATH = os.getenv("DRIVER_PATH")
 
 	driver = webdriver.Chrome(PATH)
 

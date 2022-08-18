@@ -1,5 +1,5 @@
 import discord
-import settings
+import os
 import firebase_admin
 from firebase_admin import db
 from discord.ext import commands
@@ -10,9 +10,9 @@ intents = discord.Intents.default()
 
 bot = commands.Bot(command_prefix="!", help_command=None, intents=intents)
 
-cred_obj = firebase_admin.credentials.Certificate(settings.CRED_OBJ)
+cred_obj = firebase_admin.credentials.Certificate(os.getenv("CRED_OBJ"))
 default_app = firebase_admin.initialize_app(cred_obj, {
-    'databaseURL': settings.URL
+    'databaseURL': os.getenv("DB_URL")
     })
 
 
@@ -41,13 +41,6 @@ async def notify():
             for i in available_tuts:
 
                 await userObj.send(f"<@{user}> {i} for {course} has been made available. If you get the seat, you can remove this course using: `!remove {course} {tut}`")
-
-
-
-
-
-
-
 
 
 @bot.event
@@ -100,5 +93,5 @@ async def remove(ctx, course, tut):
 
 
 
-bot.run(settings.TOKEN)
+bot.run(os.getenv("TOKEN"))
 
