@@ -59,7 +59,7 @@ async def help(ctx):
     embed.add_field(name="!courses", value="View the tutorials that you are currently watching", inline=True)
     embed.add_field(name="!remove [Course Code] [Tutorial Name]", value="Removes a tutorial from the watchlist. Note the format is the same as !watch", inline=True)
     embed.add_field(name="!removeall [Course Code](optional)", value="Removes all tutorial from the given course. If no course is given, than it will remove all tutorials from all courses", inline=True)
-    await ctx.channel.send(embed=embed)
+    await ctx.reply(embed=embed)
 
 
 @bot.command()
@@ -69,7 +69,7 @@ async def watch(ctx, course, tut):
     tut = tut.upper()
 
     db.reference(f"/Users/{ctx.author.id}/Tutorials/{course}").update({tut: 0})
-    await ctx.channel.send(f"You are now watching {tut} for {course}")
+    await ctx.reply(f"You are now watching {tut} for {course}")
 
 @bot.command()
 async def courses(ctx):
@@ -88,19 +88,19 @@ async def courses(ctx):
 
         embed.add_field(name=course_name, value="\n".join(tuts), inline=True)
 
-    await ctx.send(embed=embed)
+    await ctx.reply(embed=embed)
 
 @bot.command()
 async def removeall(ctx, course = None):
     if course:
-        
+
         course = course.upper()
 
         db.reference(f"/Users/{ctx.author.id}/Tutorials/").update({course: None})
-        await ctx.channel.send(f"You are no longer watching any tutorials for {course}")
+        await ctx.reply(f"You are no longer watching any tutorials for {course}")
     else:
         db.reference(f"/Users").update({ctx.author.id: None})
-        await ctx.channel.send(f"You are no longer watching any tutorials")
+        await ctx.reply(f"You are no longer watching any tutorials")
 
 
 @bot.command()
@@ -110,7 +110,7 @@ async def remove(ctx, course, tut):
     tut = tut.upper()
 
     db.reference(f"/Users/{ctx.author.id}/Tutorials/{course}").update({tut: None})
-    await ctx.channel.send(f"You are no longer watching {tut} for {course}")
+    await ctx.reply(f"You are no longer watching {tut} for {course}")
 
 
 
