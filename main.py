@@ -110,7 +110,9 @@ async def remove(ctx, course, tut):
     db.reference(f"/Users/{ctx.author.id}/Tutorials/{course}").update({tut: None})
     await ctx.reply(f"You are no longer watching {tut} for {course}")
 
-
+@bot.command()
+async def check(ctx):
+    notify()
 
 bot.run(os.getenv("TOKEN"))
 
