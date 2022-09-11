@@ -8,9 +8,9 @@ import ttb
 
 bot = commands.Bot(command_prefix="!", help_command=None, intents=discord.Intents.all())
 
-cred_obj = firebase_admin.credentials.Certificate(os.getenv("CRED_OBJ"))
+cred_obj = firebase_admin.credentials.Certificate(settings.CRED_OBJ)
 default_app = firebase_admin.initialize_app(cred_obj, {
-    'databaseURL': os.getenv("DB_URL")
+    'databaseURL': settings.DB_URL
     })
 
 
@@ -114,5 +114,5 @@ async def remove(ctx, course, tut):
 async def check(ctx):
     notify()
 
-bot.run(os.getenv("TOKEN"))
+bot.run(settings.TOKEN)
 

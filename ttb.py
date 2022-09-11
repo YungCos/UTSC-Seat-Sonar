@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import settings
 import os
 
 
@@ -16,8 +17,7 @@ def findCourse(course, tuts):
 	#chrome_options.add_argument("--disable-dev-shm-usage")
 	chrome_options.add_argument("--no-sandbox")
 
-	PATH = os.getenv("DRIVER_PATH")
-	#PATH = 'chromedriver.exe'
+	PATH = settings.PATH
 
 	driver = webdriver.Chrome(PATH, options=chrome_options)
 
